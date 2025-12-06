@@ -1,0 +1,504 @@
+{
+  "customers": [
+    {
+      "id": "CUS0001",
+      "name": "Satoshi Tanaka",
+      "email": "satoshi.tanaka1@example.com",
+      "phone": "090-3003-302",
+      "address": "5丁目 4番地 大阪",
+      "joinedAt": "2022-01-27",
+      "status": "Inactive",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0002",
+      "name": "Miku Inoue",
+      "email": "miku.inoue2@example.com",
+      "phone": "090-6624-907",
+      "address": "4丁目 20番地 東京",
+      "joinedAt": "2022-02-14",
+      "status": "Inactive",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0003",
+      "name": "Hanako Tanaka",
+      "email": "hanako.tanaka3@example.com",
+      "phone": "090-7830-294",
+      "address": "3丁目 9番地 大阪",
+      "joinedAt": "2021-12-05",
+      "status": "Inactive",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0004",
+      "name": "Satoshi Nakajima",
+      "email": "satoshi.nakajima4@example.com",
+      "phone": "090-3133-269",
+      "address": "1丁目 2番地 名古屋",
+      "joinedAt": "2023-04-19",
+      "status": "Active",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0005",
+      "name": "Taro Kato",
+      "email": "taro.kato5@example.com",
+      "phone": "090-7057-557",
+      "address": "2丁目 1番地 大阪",
+      "joinedAt": "2019-04-06",
+      "status": "Inactive",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0006",
+      "name": "Rina Sato",
+      "email": "rina.sato6@example.com",
+      "phone": "090-3976-823",
+      "address": "1丁目 16番地 大阪",
+      "joinedAt": "2023-08-17",
+      "status": "Active",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0007",
+      "name": "Rina Shimizu",
+      "email": "rina.shimizu7@example.com",
+      "phone": "090-1061-938",
+      "address": "4丁目 2番地 福岡",
+      "joinedAt": "2023-06-29",
+      "status": "Inactive",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0008",
+      "name": "Kaito Shimizu",
+      "email": "kaito.shimizu8@example.com",
+      "phone": "090-2718-374",
+      "address": "4丁目 16番地 大阪",
+      "joinedAt": "2023-12-11",
+      "status": "Active",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0009",
+      "name": "Ken Tanaka",
+      "email": "ken.tanaka9@example.com",
+      "phone": "090-1363-720",
+      "address": "4丁目 14番地 名古屋",
+      "joinedAt": "2021-01-22",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0010",
+      "name": "Rina Suzuki",
+      "email": "rina.suzuki10@example.com",
+      "phone": "090-5021-363",
+      "address": "5丁目 5番地 福岡",
+      "joinedAt": "2024-04-24",
+      "status": "Inactive",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0011",
+      "name": "Aiko Inoue",
+      "email": "aiko.inoue11@example.com",
+      "phone": "090-2808-379",
+      "address": "4丁目 17番地 福岡",
+      "joinedAt": "2019-01-30",
+      "status": "Inactive",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0012",
+      "name": "Yuki Tanaka",
+      "email": "yuki.tanaka12@example.com",
+      "phone": "090-7349-540",
+      "address": "1丁目 14番地 東京",
+      "joinedAt": "2023-07-24",
+      "status": "Active",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0013",
+      "name": "Hanako Kobayashi",
+      "email": "hanako.kobayashi13@example.com",
+      "phone": "090-5968-462",
+      "address": "2丁目 4番地 東京",
+      "joinedAt": "2023-03-24",
+      "status": "Inactive",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0014",
+      "name": "Hanako Inoue",
+      "email": "hanako.inoue14@example.com",
+      "phone": "090-1372-805",
+      "address": "3丁目 15番地 名古屋",
+      "joinedAt": "2020-05-16",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0015",
+      "name": "Ken Suzuki",
+      "email": "ken.suzuki15@example.com",
+      "phone": "090-9367-138",
+      "address": "3丁目 1番地 東京",
+      "joinedAt": "2024-09-24",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0016",
+      "name": "Rina Suzuki",
+      "email": "rina.suzuki16@example.com",
+      "phone": "090-9238-998",
+      "address": "1丁目 10番地 名古屋",
+      "joinedAt": "2019-09-20",
+      "status": "Active",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0017",
+      "name": "Hanako Inoue",
+      "email": "hanako.inoue17@example.com",
+      "phone": "090-4435-790",
+      "address": "2丁目 14番地 大阪",
+      "joinedAt": "2019-07-26",
+      "status": "Inactive",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0018",
+      "name": "Ken Yamamoto",
+      "email": "ken.yamamoto18@example.com",
+      "phone": "090-5969-601",
+      "address": "3丁目 15番地 名古屋",
+      "joinedAt": "2024-03-09",
+      "status": "Inactive",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0019",
+      "name": "Taro Nakajima",
+      "email": "taro.nakajima19@example.com",
+      "phone": "090-4733-186",
+      "address": "2丁目 8番地 福岡",
+      "joinedAt": "2023-01-28",
+      "status": "Active",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0020",
+      "name": "Satoshi Nakajima",
+      "email": "satoshi.nakajima20@example.com",
+      "phone": "090-9881-942",
+      "address": "3丁目 13番地 名古屋",
+      "joinedAt": "2021-03-06",
+      "status": "Active",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0021",
+      "name": "Satoshi Kobayashi",
+      "email": "satoshi.kobayashi21@example.com",
+      "phone": "090-4971-279",
+      "address": "4丁目 16番地 福岡",
+      "joinedAt": "2021-05-13",
+      "status": "Active",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0022",
+      "name": "Ken Watanabe",
+      "email": "ken.watanabe22@example.com",
+      "phone": "090-8523-111",
+      "address": "1丁目 10番地 名古屋",
+      "joinedAt": "2022-11-02",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0023",
+      "name": "Hanako Watanabe",
+      "email": "hanako.watanabe23@example.com",
+      "phone": "090-2666-377",
+      "address": "1丁目 18番地 東京",
+      "joinedAt": "2022-02-10",
+      "status": "Active",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0024",
+      "name": "Haruto Yamamoto",
+      "email": "haruto.yamamoto24@example.com",
+      "phone": "090-9090-333",
+      "address": "2丁目 6番地 東京",
+      "joinedAt": "2022-09-05",
+      "status": "Active",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0025",
+      "name": "Miku Nakajima",
+      "email": "miku.nakajima25@example.com",
+      "phone": "090-7800-708",
+      "address": "2丁目 18番地 東京",
+      "joinedAt": "2019-12-05",
+      "status": "Inactive",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0026",
+      "name": "Haruto Kato",
+      "email": "haruto.kato26@example.com",
+      "phone": "090-2231-789",
+      "address": "2丁目 18番地 東京",
+      "joinedAt": "2024-08-18",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0027",
+      "name": "Miku Sato",
+      "email": "miku.sato27@example.com",
+      "phone": "090-1207-296",
+      "address": "4丁目 17番地 大阪",
+      "joinedAt": "2022-11-13",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0028",
+      "name": "Haruto Kato",
+      "email": "haruto.kato28@example.com",
+      "phone": "090-3018-852",
+      "address": "4丁目 16番地 名古屋",
+      "joinedAt": "2021-04-28",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0029",
+      "name": "Rina Watanabe",
+      "email": "rina.watanabe29@example.com",
+      "phone": "090-7432-278",
+      "address": "1丁目 20番地 東京",
+      "joinedAt": "2023-05-19",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0030",
+      "name": "Yuki Inoue",
+      "email": "yuki.inoue30@example.com",
+      "phone": "090-6169-856",
+      "address": "1丁目 3番地 福岡",
+      "joinedAt": "2020-07-14",
+      "status": "Inactive",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0031",
+      "name": "Yuki Tanaka",
+      "email": "yuki.tanaka31@example.com",
+      "phone": "090-4648-531",
+      "address": "3丁目 4番地 福岡",
+      "joinedAt": "2020-12-31",
+      "status": "Inactive",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0032",
+      "name": "Taro Sato",
+      "email": "taro.sato32@example.com",
+      "phone": "090-4041-643",
+      "address": "4丁目 9番地 福岡",
+      "joinedAt": "2019-08-03",
+      "status": "Active",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0033",
+      "name": "Hanako Suzuki",
+      "email": "hanako.suzuki33@example.com",
+      "phone": "090-1445-336",
+      "address": "2丁目 17番地 大阪",
+      "joinedAt": "2024-12-17",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0034",
+      "name": "Hanako Nakajima",
+      "email": "hanako.nakajima34@example.com",
+      "phone": "090-7178-928",
+      "address": "5丁目 9番地 大阪",
+      "joinedAt": "2023-07-14",
+      "status": "Inactive",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0035",
+      "name": "Miku Shimizu",
+      "email": "miku.shimizu35@example.com",
+      "phone": "090-7242-224",
+      "address": "3丁目 5番地 名古屋",
+      "joinedAt": "2023-06-13",
+      "status": "Active",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0036",
+      "name": "Rina Suzuki",
+      "email": "rina.suzuki36@example.com",
+      "phone": "090-3387-494",
+      "address": "4丁目 15番地 大阪",
+      "joinedAt": "2024-08-22",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0037",
+      "name": "Ken Tanaka",
+      "email": "ken.tanaka37@example.com",
+      "phone": "090-1224-496",
+      "address": "3丁目 1番地 福岡",
+      "joinedAt": "2024-01-28",
+      "status": "Active",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0038",
+      "name": "Kaito Tanaka",
+      "email": "kaito.tanaka38@example.com",
+      "phone": "090-3894-289",
+      "address": "2丁目 12番地 東京",
+      "joinedAt": "2020-08-24",
+      "status": "Inactive",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0039",
+      "name": "Ken Kato",
+      "email": "ken.kato39@example.com",
+      "phone": "090-4267-526",
+      "address": "2丁目 14番地 大阪",
+      "joinedAt": "2024-06-02",
+      "status": "Active",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0040",
+      "name": "Yuki Suzuki",
+      "email": "yuki.suzuki40@example.com",
+      "phone": "090-1260-952",
+      "address": "4丁目 15番地 東京",
+      "joinedAt": "2019-01-09",
+      "status": "Active",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0041",
+      "name": "Rina Kobayashi",
+      "email": "rina.kobayashi41@example.com",
+      "phone": "090-2410-391",
+      "address": "5丁目 10番地 東京",
+      "joinedAt": "2019-02-18",
+      "status": "Inactive",
+      "rank": "Silver"
+    },
+    {
+      "id": "CUS0042",
+      "name": "Satoshi Nakajima",
+      "email": "satoshi.nakajima42@example.com",
+      "phone": "090-2329-685",
+      "address": "3丁目 10番地 名古屋",
+      "joinedAt": "2021-06-20",
+      "status": "Inactive",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0043",
+      "name": "Hanako Sato",
+      "email": "hanako.sato43@example.com",
+      "phone": "090-1982-391",
+      "address": "3丁目 18番地 福岡",
+      "joinedAt": "2024-07-23",
+      "status": "Inactive",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0044",
+      "name": "Taro Watanabe",
+      "email": "taro.watanabe44@example.com",
+      "phone": "090-4851-989",
+      "address": "4丁目 1番地 東京",
+      "joinedAt": "2024-02-19",
+      "status": "Inactive",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0045",
+      "name": "Ken Sato",
+      "email": "ken.sato45@example.com",
+      "phone": "090-5366-301",
+      "address": "4丁目 5番地 名古屋",
+      "joinedAt": "2019-10-31",
+      "status": "Active",
+      "rank": "Platinum"
+    },
+    {
+      "id": "CUS0046",
+      "name": "Ken Yamamoto",
+      "email": "ken.yamamoto46@example.com",
+      "phone": "090-8957-629",
+      "address": "4丁目 20番地 福岡",
+      "joinedAt": "2020-01-18",
+      "status": "Active",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0047",
+      "name": "Aiko Inoue",
+      "email": "aiko.inoue47@example.com",
+      "phone": "090-9440-584",
+      "address": "2丁目 17番地 大阪",
+      "joinedAt": "2022-11-12",
+      "status": "Inactive",
+      "rank": "Gold"
+    },
+    {
+      "id": "CUS0048",
+      "name": "Yuki Shimizu",
+      "email": "yuki.shimizu48@example.com",
+      "phone": "090-5493-150",
+      "address": "3丁目 6番地 大阪",
+      "joinedAt": "2021-03-09",
+      "status": "Active",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0049",
+      "name": "Miku Inoue",
+      "email": "miku.inoue49@example.com",
+      "phone": "090-3803-612",
+      "address": "1丁目 1番地 名古屋",
+      "joinedAt": "2023-11-25",
+      "status": "Active",
+      "rank": "Bronze"
+    },
+    {
+      "id": "CUS0050",
+      "name": "Haruto Kobayashi",
+      "email": "haruto.kobayashi50@example.com",
+      "phone": "090-6392-315",
+      "address": "4丁目 16番地 名古屋",
+      "joinedAt": "2021-08-02",
+      "status": "Inactive",
+      "rank": "Gold"
+    }
+  ]
+}

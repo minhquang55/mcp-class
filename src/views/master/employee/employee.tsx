@@ -22,21 +22,19 @@ const Employee = () => {
     fetchData();
   }, []);
   return (
-    <CardBox>
-      <DynamicTable
-        columns={columns}
-        data={data}
-        title={t('employee:title')}
-        action={
-          <Button
-            onClick={() => navigate(ROUTES.MASTER.EMPLOYEE.EMPLOYEE_ADD)}
-            className="p-2 px-4 rounded-md "
-          >
-            <Icon icon="material-symbols:add" width={24} height={24} />
-          </Button>
-        }
-      />
-    </CardBox>
+    <DynamicTable
+      columns={columns}
+      data={data}
+      title={t('employee:title')}
+      action={
+        <Button
+          onClick={() => navigate(ROUTES.MASTER.EMPLOYEE.EMPLOYEE_ADD)}
+          className="p-2 px-4 rounded-md "
+        >
+          <Icon icon="material-symbols:add" width={24} height={24} />
+        </Button>
+      }
+    />
   );
 };
 
