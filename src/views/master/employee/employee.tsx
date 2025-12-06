@@ -2,7 +2,6 @@ import DynamicTable from '@/components/utilities/table/DinamicTable';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getListEmployees } from 'src/api/employee.api';
-import CardBox from 'src/components/shared/CardBox';
 import { columns } from '@/views/master/employee/employee-column';
 import { Button } from 'src/components/ui/button';
 import { useNavigate } from 'react-router';
