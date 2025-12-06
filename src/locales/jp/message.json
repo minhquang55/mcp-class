@@ -1,0 +1,10 @@
+{
+  "emptyMessage": "データが見つかりません。",
+  "loadingMessage": "読み込み中...",
+  "errorMessage": "エラーが発生しました。",
+  "searchPlaceholder": "関連する項目を検索...",
+  "rowsPerPage": "ページあたりの行数",
+  "of": "の",
+  "page": "ページ",
+  "select_an_option": "オプションを選択"
+}

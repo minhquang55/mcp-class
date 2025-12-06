@@ -1,0 +1,38 @@
+{
+  "title": "従業員一覧",
+  "columns": {
+    "id": "従業員ID",
+    "name": "名前",
+    "position": "役職",
+    "office": "オフィス",
+    "age": "年齢",
+    "startDate": "入社日",
+    "rating": "評価",
+    "joinedAt": "入社日",
+    "email": "メールアドレス",
+    "status": "ステータス"
+  },
+  "form": {
+    "title_create": "従業員を追加",
+    "title_update": "従業員情報を編集",
+    "fields": {
+      "id": "従業員ID",
+      "name": "名前",
+      "email": "メールアドレス",
+      "position": "役職",
+      "password": "パスワード",
+      "office": "オフィス",
+      "age": "年齢",
+      "startDate": "入社日",
+      "rating": "評価",
+      "status": "ステータス"
+    },
+    "positions": {
+      "manager": "マネージャー",
+      "developer": "開発者",
+      "designer": "デザイナー",
+      "qa": "QAエンジニア",
+      "hr": "人事"
+    }
+  }
+}

@@ -3,6 +3,7 @@
 import { lazy } from 'react';
 import { Navigate, createBrowserRouter } from 'react-router';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
+import { ROUTES } from 'src/constants/routes';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -38,38 +39,44 @@ const SolarIcon = Loadable(lazy(() => import('../views/icons/SolarIcon')));
 
 // const SamplePage = lazy(() => import('../views/sample-page/SamplePage'));
 
+// Master
+const Employees = Loadable(lazy(() => import('../views/master/employee/employee')));
+const EmployeesForm = Loadable(lazy(() => import('../views/master/employee/employee-form')));
+
 const Router = [
   {
     path: '/',
     element: <FullLayout />,
     children: [
-      { path: '/', exact: true, element: <Modern /> },
+      { path: ROUTES.HOME, exact: true, element: <Modern /> },
       // { path: '/', exact: true, element: <SamplePage /> },
-      { path: '*', element: <Navigate to="/auth/404" /> },
+      { path: ROUTES.OTHER.ERROR, element: <Navigate to={ROUTES.OTHER.AUTH_NOTFOUND} /> },
 
-      { path: '/apps/notes', element: <Notes /> },
-      { path: '/utilities/form', element: <Form /> },
-      { path: '/utilities/table', element: <Table /> },
-      { path: '/apps/tickets', element: <Tickets /> },
-      { path: '/apps/tickets/create', element: <CreateTickets /> },
-      { path: '/apps/blog/post', element: <Blog /> },
-      { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
-      { path: '/user-profile', element: <UserProfile /> },
-      { path: '/icons/iconify', element: <SolarIcon /> },
+      { path: ROUTES.APPS.NOTES, element: <Notes /> },
+      { path: ROUTES.PAGES.UTILITIES_FORM, element: <Form /> },
+      { path: ROUTES.PAGES.UTILITIES_TABLE, element: <Table /> },
+      { path: ROUTES.APPS.TICKETS, element: <Tickets /> },
+      { path: ROUTES.APPS.CREATE_TICKETS, element: <CreateTickets /> },
+      { path: ROUTES.APPS.BLOG_POST, element: <Blog /> },
+      { path: ROUTES.APPS.BLOG_DETAIL, element: <BlogDetail /> },
+      { path: ROUTES.PAGES.USER_PROFILE, element: <UserProfile /> },
+      { path: ROUTES.ICONS.ICONIFY, element: <SolarIcon /> },
+      { path: ROUTES.MASTER.EMPLOYEE.EMPLOYEE, element: <Employees /> },
+      { path: ROUTES.MASTER.EMPLOYEE.EMPLOYEE_ADD, element: <EmployeesForm /> },
     ],
   },
   {
     path: '/',
     element: <BlankLayout />,
     children: [
-      { path: '/auth/auth2/login', element: <Login2 /> },
+      { path: ROUTES.AUTH.LOGIN, element: <Login2 /> },
 
-      { path: '/auth/auth2/register', element: <Register2 /> },
+      { path: ROUTES.AUTH.REGISTER, element: <Register2 /> },
 
-      { path: '/auth/maintenance', element: <Maintainance /> },
-      { path: '404', element: <Error /> },
-      { path: '/auth/404', element: <Error /> },
-      { path: '*', element: <Navigate to="/auth/404" /> },
+      { path: ROUTES.AUTH.MAINTENANCE, element: <Maintainance /> },
+      { path: ROUTES.OTHER.NOTFOUND, element: <Error /> },
+      { path: ROUTES.OTHER.AUTH_NOTFOUND, element: <Error /> },
+      { path: ROUTES.OTHER.ERROR, element: <Navigate to={ROUTES.OTHER.AUTH_NOTFOUND} /> },
     ],
   },
 ];
