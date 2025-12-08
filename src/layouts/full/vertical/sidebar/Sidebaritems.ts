@@ -65,31 +65,30 @@ const SidebarContent: MenuItem[] = [
       },
     ],
   },
-
-  {
-    heading: 'pages',
-    children: [
-      {
-        name: 'Tables',
-        icon: 'solar:server-linear',
-        id: uniqueId(),
-        url: '/utilities/table',
-      },
-      {
-        name: 'Form',
-        icon: 'solar:document-add-linear',
-        id: uniqueId(),
-        url: '/utilities/form',
-      },
-      {
-        id: uniqueId(),
-        name: 'User Profile',
-        icon: 'solar:user-circle-linear',
-        url: '/user-profile',
-        isPro: false,
-      },
-    ],
-  },
+  // {
+  //   heading: 'pages',
+  //   children: [
+  //     {
+  //       name: 'Tables',
+  //       icon: 'solar:server-linear',
+  //       id: uniqueId(),
+  //       url: '/utilities/table',
+  //     },
+  //     {
+  //       name: 'Form',
+  //       icon: 'solar:document-add-linear',
+  //       id: uniqueId(),
+  //       url: '/utilities/form',
+  //     },
+  //     {
+  //       id: uniqueId(),
+  //       name: 'User Profile',
+  //       icon: 'solar:user-circle-linear',
+  //       url: '/user-profile',
+  //       isPro: false,
+  //     },
+  //   ],
+  // },
   // {
   //   heading: 'Apps',
   //   children: [
