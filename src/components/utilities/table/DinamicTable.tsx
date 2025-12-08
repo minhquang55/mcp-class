@@ -72,9 +72,10 @@ interface DynamicTableProps<T> {
   title?: string;
   columns: ColumnInput<T>[];
   action?: React.ReactNode;
+  onRowClick?: (row: T) => void;
 }
 
-const DataTable = <T,>({ data, title, columns, action }: DynamicTableProps<T>) => {
+const DataTable = <T,>({ data, title, columns, action, onRowClick }: DynamicTableProps<T>) => {
   const { t } = useTranslation();
   const [globalFilter, setGlobalFilter] = useState('');
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -219,7 +220,11 @@ const DataTable = <T,>({ data, title, columns, action }: DynamicTableProps<T>) =
               <TableBody>
                 {table.getRowModel().rows.length > 0 ? (
                   table.getRowModel().rows.map((row) => (
-                    <TableRow key={row.id} className="hover:bg-primary/10 transition-colors">
+                    <TableRow
+                      key={row.id}
+                      className="hover:bg-primary/10 transition-colors"
+                      onClick={() => onRowClick && onRowClick(row.original)}
+                    >
                       {row.getVisibleCells().map((cell) => (
                         <TableCell key={cell.id} className="text-gray-700 dark:text-white/70">
                           {flexRender(cell.column.columnDef.cell, cell.getContext())}

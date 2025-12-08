@@ -6,5 +6,10 @@
   "rowsPerPage": "ページあたりの行数",
   "of": "の",
   "page": "ページ",
-  "select_an_option": "オプションを選択"
+  "select_an_option": "オプションを選択",
+  "required_field": "このフィールドは必須です。",
+  "min_length": "最小長は{{min}}文字です。",
+  "max_length": "最大長は{{max}}文字です。",
+  "invalid_format": "無効な形式です。",
+  "confirmPassword": "パスワードと確認パスワードが一致しません。"
 }

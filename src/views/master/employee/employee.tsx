@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { getListEmployees } from 'src/api/employee.api';
 import { columns } from '@/views/master/employee/employee-column';
 import { Button } from 'src/components/ui/button';
-import { useNavigate } from 'react-router';
+import { generatePath, useNavigate } from 'react-router';
 import { ROUTES } from 'src/constants/routes';
 import { Icon } from '@iconify/react';
 
@@ -25,6 +25,9 @@ const Employee = () => {
       columns={columns}
       data={data}
       title={t('employee:title')}
+      onRowClick={(row) =>
+        navigate(generatePath(ROUTES.MASTER.EMPLOYEE.EMPLOYEE_DETAIL, { id: row.id }))
+      }
       action={
         <Button
           onClick={() => navigate(ROUTES.MASTER.EMPLOYEE.EMPLOYEE_ADD)}
