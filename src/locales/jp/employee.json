@@ -21,6 +21,7 @@
       "email": "メールアドレス",
       "position": "役職",
       "password": "パスワード",
+      "confirmPassword": "パスワード（確認）",
       "office": "オフィス",
       "age": "年齢",
       "startDate": "入社日",
@@ -28,11 +29,11 @@
       "status": "ステータス"
     },
     "positions": {
-      "manager": "マネージャー",
+      "engineer": "エンジニア",
       "developer": "開発者",
       "designer": "デザイナー",
-      "qa": "QAエンジニア",
-      "hr": "人事"
+      "analyst": "アナリスト",
+      "productOwner": "プロダクトオーナー"
     }
   }
 }

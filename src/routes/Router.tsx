@@ -42,6 +42,7 @@ const Modern = Loadable(lazy(() => import('../views/dashboards/Modern')));
 // Master
 const Employees = Loadable(lazy(() => import('../views/master/employee/employee')));
 const EmployeesForm = Loadable(lazy(() => import('../views/master/employee/employee-form')));
+const EmployeeDetail = Loadable(lazy(() => import('../views/master/employee/employee-detail')));
 
 const Router = [
   {
@@ -61,6 +62,7 @@ const Router = [
       // { path: ROUTES.ICONS.ICONIFY, element: <SolarIcon /> },
       { path: ROUTES.MASTER.EMPLOYEE.EMPLOYEE, element: <Employees /> },
       { path: ROUTES.MASTER.EMPLOYEE.EMPLOYEE_ADD, element: <EmployeesForm /> },
+      { path: ROUTES.MASTER.EMPLOYEE.EMPLOYEE_DETAIL, element: <EmployeeDetail /> },
     ],
   },
   // {

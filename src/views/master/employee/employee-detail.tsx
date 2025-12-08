@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'src/components/ui/button';
 import { Calendar } from 'src/components/ui/calendar';
@@ -13,13 +13,17 @@ import {
   SelectValue,
 } from 'src/components/ui/select';
 import { useForm } from 'react-hook-form';
-import { EmployeeFormData, employeeSchema } from 'src/schema/employee.schema';
+import { EmployeeFormEdit, employeeEditSchema } from 'src/schema/employee.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, SimpleField } from 'src/components/ui/form';
+import { useParams } from 'react-router';
+import { getEmployeeById } from 'src/api/employee.api';
 
-const EmployeeForm = () => {
+const EmployeeDetail = () => {
   const { t } = useTranslation();
-  const form = useForm<EmployeeFormData>({
+  const id = useParams().id;
+  const [open, setOpen] = useState(false);
+  const form = useForm<EmployeeFormEdit>({
     defaultValues: {
       name: '',
       email: '',
@@ -28,12 +32,28 @@ const EmployeeForm = () => {
       startDate: undefined,
     },
     mode: 'onBlur',
-    resolver: zodResolver(employeeSchema),
+    resolver: zodResolver(employeeEditSchema),
   });
 
-  const [open, setOpen] = useState(false);
+  const fetchEmployee = async () => {
+    const result = await getEmployeeById(id!);
+    if (result) {
+      form.reset({
+        name: result.name,
+        email: result.email,
+        position: result.position as EmployeeFormEdit['position'],
+        password: '',
+        startDate: new Date(result.joinedAt) || undefined,
+      });
+    }
+  };
+  useEffect(() => {
+    if (id) {
+      fetchEmployee();
+    }
+  }, [id]);
 
-  const onSubmit = (data: EmployeeFormData) => {
+  const onSubmit = (data: EmployeeFormEdit) => {
     alert(JSON.stringify(data, null, 2));
   };
 
@@ -77,17 +97,21 @@ const EmployeeForm = () => {
                       <SelectValue placeholder={t('message:select_an_option')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="manager">
-                        {t('employee:form.positions.manager')}
+                      <SelectItem value="Engineer">
+                        {t('employee:form.positions.engineer')}
                       </SelectItem>
-                      <SelectItem value="developer">
+                      <SelectItem value="Developer">
                         {t('employee:form.positions.developer')}
                       </SelectItem>
-                      <SelectItem value="designer">
+                      <SelectItem value="Designer">
                         {t('employee:form.positions.designer')}
                       </SelectItem>
-                      <SelectItem value="qa">{t('employee:form.positions.qa')}</SelectItem>
-                      <SelectItem value="hr">{t('employee:form.positions.hr')}</SelectItem>
+                      <SelectItem value="Analyst">
+                        {t('employee:form.positions.analyst')}
+                      </SelectItem>
+                      <SelectItem value="Product Owner">
+                        {t('employee:form.positions.productOwner')}
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 )}
@@ -166,4 +190,4 @@ const EmployeeForm = () => {
   );
 };
 
-export default EmployeeForm;
+export default EmployeeDetail;

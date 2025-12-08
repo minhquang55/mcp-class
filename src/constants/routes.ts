@@ -10,6 +10,7 @@ export const ROUTES = {
     EMPLOYEE: {
       EMPLOYEE: '/master/employee',
       EMPLOYEE_ADD: '/master/employee/add',
+      EMPLOYEE_DETAIL: '/master/employee/detail/:id',
     },
   },
   PAGES: {
