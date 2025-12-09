@@ -1,0 +1,11 @@
+{
+  "home": {
+    "title": "ホーム",
+    "dashboard": "ダッシュボード"
+  },
+  "master": {
+    "title": "マスター管理",
+    "employee": "従業員管理",
+    "customer": "顧客管理"
+  }
+}

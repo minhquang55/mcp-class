@@ -4,6 +4,7 @@ import SidebarContent from '../sidebar/Sidebaritems';
 import { Link } from 'react-router';
 import SimpleBar from 'simplebar-react';
 import { Input } from 'src/components/ui/input';
+import i18n from 'src/lib/i18n';
 
 function Search() {
   const [query, setQuery] = useState('');
@@ -51,7 +52,7 @@ function Search() {
         />
 
         <Input
-          placeholder="Search...."
+          placeholder={i18n.t('message:searchPlaceholder')}
           className="rounded-xl pl-10"
           required
           value={query}

@@ -1,13 +1,11 @@
-import SidebarContent from './Sidebaritems';
-import SimpleBar from 'simplebar-react';
 import { Icon } from '@iconify/react';
-import rocket from 'src/assets/images/backgrounds/rocket.png';
-import FullLogo from '../../shared/logo/FullLogo';
 import { Link, useLocation } from 'react-router';
-import { Button } from 'src/components/ui/button';
+import SimpleBar from 'simplebar-react';
 import { useTheme } from 'src/components/provider/theme-provider';
 import { AMLogo, AMMenu, AMMenuItem, AMSidebar, AMSubmenu } from 'tailwind-sidebar';
 import 'tailwind-sidebar/styles.css';
+import FullLogo from '../../shared/logo/FullLogo';
+import SidebarContent from './Sidebaritems';
 
 const renderSidebarItems = (
   items: any[],
@@ -124,19 +122,6 @@ const SidebarLayout = ({ onClose }: { onClose?: () => void }) => {
               )}
             </div>
           ))}
-
-          {/* Promo Section */}
-          <div className="mt-9  overflow-hidden">
-            <div className="flex w-full bg-lightprimary rounded-lg p-6">
-              <div className="lg:w-1/2 w-full">
-                <h5 className="text-base text-charcoal">Haven't Account?</h5>
-                <Button className="whitespace-nowrap mt-2 text-[13px]">Get Pro</Button>
-              </div>
-              <div className="lg:w-1/2 w-full -mt-4 ml-[26px] scale-[1.2] shrink-0">
-                <img src={rocket} alt="rocket" />
-              </div>
-            </div>
-          </div>
         </div>
       </SimpleBar>
     </AMSidebar>
