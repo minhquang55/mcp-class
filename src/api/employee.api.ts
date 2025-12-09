@@ -1,6 +1,7 @@
 import employeeJson from '@/data/employees.json';
+import { EmployeeRow } from 'src/types/apps/employee';
 
-export const getListEmployees = async () => {
+export const getListEmployees = async (): Promise<Array<EmployeeRow>> => {
   return employeeJson.employees;
 };
 

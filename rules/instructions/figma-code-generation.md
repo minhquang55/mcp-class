@@ -230,3 +230,132 @@
 - Validate props with TypeScript
 - Provide fallback content for failed loads
 - Handle network errors for API-dependent components
+
+## 21. **Feature CRUD theo chuẩn `employee`**
+
+> Khi generate code từ Figma cho các màn hình master/CRUD (table + form), **luôn cố gắng bám sát convention và style giống cụm `employee`** hiện có trong project.
+
+### 21.1. **Cấu trúc thư mục & file (mirroring cụm `employee`)**
+
+- **Ví dụ cụm `employee` đang có**:
+  - List page: `src/views/master/employee/employee.tsx`
+  - Create page: `src/views/master/employee/employee-create.tsx`
+  - Edit page: `src/views/master/employee/employee-edit.tsx`
+  - Form component: `src/components/master/employee/employee-form.tsx`
+  - Constants (columns, default values): `src/constants/employee.constant.tsx`
+  - API mock: `src/api/employee.api.ts`
+  - Schema: `src/schema/employee.schema.ts`
+  - Data mock: `src/data/employees.json`
+  - Types: `src/types/apps/employee.ts`
+  - Locale: `src/locales/jp/employee.json` (và các ngôn ngữ khác nếu có)
+
+- **Cho feature mới `<Feature>` kiểu master/CRUD**:
+  - Tạo cấu trúc tương tự:
+    - `src/views/master/<feature>/<feature>.tsx` (list)
+    - `src/views/master/<feature>/<feature>-create.tsx`
+    - `src/views/master/<feature>/<feature>-edit.tsx`
+    - `src/components/master/<feature>/<feature>-form.tsx`
+    - `src/constants/<feature>.constant.tsx`
+    - `src/api/<feature>.api.ts`
+    - `src/schema/<feature>.schema.ts`
+    - `src/data/<feature>s.json`
+    - `src/types/apps/<feature>.ts`
+    - `src/locales/[lang]/<feature>.json`
+  - **Giữ nguyên pattern đặt tên** như `Employee`, `EmployeeForm`, `EmployeeCreate`, `EmployeeEdit` cho các feature khác (PascalCase cho component, kebab-case cho file TSX).
+
+### 21.2. **List page style (giống `employee.tsx`)**
+
+- **Sử dụng `DynamicTable`**:
+  - Import: `import DynamicTable from '@/components/utilities/table/DinamicTable';`
+  - Columns import từ constants: `import { columns } from 'src/constants/<feature>.constant';`
+  - Type generic: `columns: ColumnInput<FeatureRow>[];`
+  - Data state: `const [data, setData] = useState<Array<FeatureRow>>([]);`
+  - Fetch data trong `useEffect` bằng API mock tương ứng (`getList<Features>()`).
+  - Truyền prop:
+    - `columns={columns}`
+    - `data={data}`
+    - `title={t('<feature>:title')}`
+    - `onRowClick` dùng `generatePath` + `ROUTES.MASTER.<FEATURE>.<FEATURE>_EDIT`
+    - `action` là `Button` thêm mới (icon + navigate tới route create).
+
+- **Hook & libs phải dùng giống cụm `employee`**:
+  - `useTranslation()` từ `react-i18next`
+  - `useNavigate`, `generatePath` từ `react-router`
+  - `Button` từ `src/components/ui/button`
+  - `ROUTES` từ `src/constants/routes`
+
+### 21.3. **Form page style (giống `employee-form.tsx`)**
+
+- **Pattern form chung**:
+  - Functional component dạng arrow function, default export: `const <Feature>Form = ({ isEdit = false }: Props) => { ... }`
+  - Dùng `useForm` từ `react-hook-form` + `zodResolver`:
+    - `defaultValues` import từ `src/constants/<feature>.constant`
+    - `resolver` chọn giữa `<feature>Schema` và `<feature>EditSchema` giống `employee`.
+  - Dùng wrapper `Form` và `SimpleField` từ `src/components/ui/form`.
+  - Control từng field thông qua render prop `(field) => <Input {...field} />` hoặc component tương ứng (`Select`, `Calendar`, ...).
+  - `onSubmit` hiện có thể chỉ `alert(JSON.stringify(data, null, 2));` (hoặc TODO comment) – **giữ đúng pattern này** cho tới khi tích hợp API thật.
+
+- **Layout & Tailwind**:
+  - Khối form chính bọc bởi:
+    - `div` với class: `rounded-xl border border-defaultBorder md:p-6 p-4`
+  - Title dùng `h5` với class `card-title`, text lấy từ i18n:
+    - `isEdit ? t('<feature>:form.title_edit') : t('<feature>:form.title_create')`
+  - Lưới field:
+    - `div` grid với `className="mt-6 grid gap-y-2 gap-x-4 md:grid-cols-2"`
+    - Mỗi field nằm trong `div` `md:col-span-1` (hoặc span khác nếu cần).
+  - Footer button:
+    - Container: `className="mt-6 flex w-full items-center justify-between gap-3"`
+    - Button cancel: `variant="outline"`, `className="border-black-20 text-black-60"`, navigate về list route.
+    - Button submit: `type="submit"`, text từ i18n `button:submit`.
+
+- **Field types & component UI**:
+  - Text input: `Input` từ `src/components/ui/input`.
+  - Select: `Select`, `SelectTrigger`, `SelectContent`, `SelectItem`, `SelectValue` từ `src/components/ui/select`.
+  - Date picker: pattern `Popover` + `Button` + `Calendar` giống field `startDate` của `employee`.
+  - Password/confirm password: `Input` `type="password"`, custom `onChange` nếu cần chuẩn hoá giá trị.
+
+### 21.4. **Schema, constants & types (bám chuẩn `employee`)**
+
+- **Zod schema**:
+  - Định nghĩa trong `src/schema/<feature>.schema.ts`.
+  - Dùng `i18n.t('message:...')` cho message validate giống `employee.schema.ts`.
+  - Nếu có schema edit: `<feature>EditSchema = <feature>Schema.omit(...).extend(...);` giống `employeeEditSchema`.
+  - Export type: `export type <Feature>FormData = z.infer<typeof <feature>Schema>;`
+
+- **Constants**:
+  - `columns`: `ColumnInput<FeatureRow>[]`, text header luôn dùng i18n:
+    - `header: i18n.t('<feature>:columns.<fieldKey>')`
+  - `default<Feature>FormValues`: object typed theo `<Feature>FormData`, cung cấp giá trị mặc định giống `defaultEmployeeFormValues`.
+
+- **Types**:
+  - Đặt trong `src/types/apps/<feature>.ts`.
+  - Đặt tên interface/típe theo PascalCase, ví dụ: `<Feature>Row`.
+
+### 21.5. **i18n & route convention giống `employee`**
+
+- **i18n key pattern**:
+  - Tiêu đề list: `<feature>:title`
+  - Columns: `<feature>:columns.<field>`
+  - Form:
+    - Title: `<feature>:form.title_create`, `<feature>:form.title_edit`
+    - Fields: `<feature>:form.fields.<field>`
+    - Các nhóm con (ví dụ positions, statuses): `<feature>:form.<group>.<item>`
+  - Message chung dùng namespace `message:` giống hiện tại.
+
+- **Routes**:
+  - Định nghĩa theo pattern `ROUTES.MASTER.<FEATURE>.<FEATURE>`, `. <FEATURE>_ADD`, `. <FEATURE>_EDIT` giống `ROUTES.MASTER.EMPLOYEE`.
+  - Các page `...-create.tsx` và `...-edit.tsx` chỉ nên là wrapper mỏng:
+    - Create: `return <<Feature>Form />;`
+    - Edit: `return <<Feature>Form isEdit />;`
+
+### 21.6. **Tóm tắt rule “giống cụm employee”**
+
+- **Luôn**:
+  - Mirror cấu trúc thư mục + tên file như `employee`.
+  - Dùng `DynamicTable` + `columns` từ constants cho list.
+  - Dùng `react-hook-form` + `zodResolver` + `Form`/`SimpleField` cho form.
+  - Dùng i18n cho toàn bộ text (không hardcode).
+  - Dùng `ROUTES` + `useNavigate`/`useParams` từ `react-router`.
+  - Bám Tailwind class layout giống `employee-form.tsx` trừ khi Figma yêu cầu khác rõ ràng.
+- Chỉ khác đi khi Figma/Business yêu cầu đặc biệt; mặc định, **code sinh ra phải trông và hành xử giống cụm `employee`**.
+

@@ -1,16 +1,17 @@
 import DynamicTable from '@/components/utilities/table/DinamicTable';
+import { Icon } from '@iconify/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getListEmployees } from 'src/api/employee.api';
-import { columns } from '@/views/master/employee/employee-column';
-import { Button } from 'src/components/ui/button';
 import { generatePath, useNavigate } from 'react-router';
+import { getListEmployees } from 'src/api/employee.api';
+import { Button } from 'src/components/ui/button';
+import { columns } from 'src/constants/employee.constant';
 import { ROUTES } from 'src/constants/routes';
-import { Icon } from '@iconify/react';
+import { EmployeeRow } from 'src/types/apps/employee';
 
 const Employee = () => {
   const { t } = useTranslation();
-  const [data, setData] = useState<Array<any>>([]);
+  const [data, setData] = useState<Array<EmployeeRow>>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,18 +21,19 @@ const Employee = () => {
     };
     fetchData();
   }, []);
+
   return (
     <DynamicTable
       columns={columns}
       data={data}
       title={t('employee:title')}
       onRowClick={(row) =>
-        navigate(generatePath(ROUTES.MASTER.EMPLOYEE.EMPLOYEE_DETAIL, { id: row.id }))
+        navigate(generatePath(ROUTES.MASTER.EMPLOYEE.EMPLOYEE_EDIT, { id: row.id }))
       }
       action={
         <Button
           onClick={() => navigate(ROUTES.MASTER.EMPLOYEE.EMPLOYEE_ADD)}
-          className="p-2 px-4 rounded-md "
+          className="p-2 px-4 rounded-md"
         >
           <Icon icon="material-symbols:add" width={24} height={24} />
         </Button>

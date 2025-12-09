@@ -1,18 +1,10 @@
-import { StarRating } from 'src/components/ui/star_rating';
 import i18n from '@/lib/i18n';
+import { StarRating } from 'src/components/ui/star_rating';
 import { ColumnInput } from 'src/components/utilities/table/DinamicTable';
+import { EmployeeRow } from 'src/types/apps/employee';
+import { EmployeeFormData } from 'src/schema/employee.schema';
 
-interface Employee {
-  id: number;
-  name: string;
-  email: string;
-  position: string;
-  status: string;
-  rating: number;
-  joinedAt: string;
-}
-
-export const columns: ColumnInput<Employee>[] = [
+export const columns: ColumnInput<EmployeeRow>[] = [
   {
     header: i18n.t('employee:columns.id'),
     accessorKey: 'id',
@@ -43,3 +35,12 @@ export const columns: ColumnInput<Employee>[] = [
     accessorKey: 'joinedAt',
   },
 ];
+
+export const defaultEmployeeFormValues: EmployeeFormData = {
+  name: '',
+  email: '',
+  position: 'Engineer',
+  password: '',
+  confirmPassword: '',
+  startDate: null,
+};

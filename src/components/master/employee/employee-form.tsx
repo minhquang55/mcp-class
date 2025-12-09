@@ -1,8 +1,13 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router';
+import { getEmployeeById } from 'src/api/employee.api';
 import { Button } from 'src/components/ui/button';
 import { Calendar } from 'src/components/ui/calendar';
+import { Form, SimpleField } from 'src/components/ui/form';
 import { Input } from 'src/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from 'src/components/ui/popover';
 import {
@@ -12,44 +17,69 @@ import {
   SelectTrigger,
   SelectValue,
 } from 'src/components/ui/select';
-import { useForm } from 'react-hook-form';
-import { EmployeeFormData, employeeSchema } from 'src/schema/employee.schema';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, SimpleField } from 'src/components/ui/form';
+import { defaultEmployeeFormValues } from 'src/constants/employee.constant';
+import { ROUTES } from 'src/constants/routes';
+import {
+  EmployeeFormData,
+  EmployeeFormEdit,
+  employeeEditSchema,
+  employeeSchema,
+} from 'src/schema/employee.schema';
 
-const EmployeeForm = () => {
+type EmployeeFormType = EmployeeFormData | EmployeeFormEdit;
+
+type EmployeeFormProps = {
+  isEdit?: boolean;
+};
+
+const EmployeeForm = ({ isEdit = false }: EmployeeFormProps) => {
   const { t } = useTranslation();
-  const form = useForm<EmployeeFormData>({
-    defaultValues: {
-      name: '',
-      email: '',
-      position: undefined,
-      password: '',
-      startDate: undefined,
-    },
-    mode: 'onBlur',
-    resolver: zodResolver(employeeSchema),
-  });
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
 
-  const onSubmit = (data: EmployeeFormData) => {
+  const form = useForm<EmployeeFormType>({
+    defaultValues: defaultEmployeeFormValues,
+    mode: 'onBlur',
+    resolver: zodResolver(isEdit ? employeeEditSchema : employeeSchema),
+  });
+
+
+  useEffect(() => {
+    const fetchEmployee = async () => {
+      if (!id) return;
+      const result = await getEmployeeById(id);
+      if (result) {
+        form.reset({
+          name: result.name,
+          email: result.email,
+          position: result.position as EmployeeFormEdit['position'],
+          password: '',
+          confirmPassword: '',
+          startDate: new Date(result.joinedAt) || null,
+        });
+      }
+    };
+
+    if (isEdit) {
+      fetchEmployee();
+    }
+  }, [form, id, isEdit]);
+
+  const onSubmit = (data: EmployeeFormType) => {
     alert(JSON.stringify(data, null, 2));
   };
 
   return (
     <Form {...form}>
-      <form className="grid gap-6 grid-cols-1" onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-6">
-          <div className="rounded-xl border border-defaultBorder md:p-6 p-4">
-            <div className="flex items-center justify-between">
-              <h5 className="card-title">{t('employee:form.title_create')}</h5>
-              <Button variant="outline" className="mt-2 w-max px-3 py-1 text-sm rounded-md">
-                <Icon icon="material-symbols:add" width={24} height={24} />
-                {t('button:submit')}
-              </Button>
-            </div>
-            <div className="mt-6 flex flex-col ">
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <div className="rounded-xl border border-defaultBorder md:p-6 p-4">
+          <h5 className="card-title">
+            {isEdit ? t('employee:form.title_edit') : t('employee:form.title_create')}
+          </h5>
+          <div className="mt-6 grid gap-y-2 gap-x-4 md:grid-cols-2">
+            <div className="md:col-span-1">
               <SimpleField
                 name="name"
                 control={form.control}
@@ -57,7 +87,8 @@ const EmployeeForm = () => {
               >
                 {(field) => <Input {...field} type="text" />}
               </SimpleField>
-
+            </div>
+            <div className="md:col-span-1">
               <SimpleField
                 name="email"
                 control={form.control}
@@ -65,7 +96,8 @@ const EmployeeForm = () => {
               >
                 {(field) => <Input {...field} type="text" />}
               </SimpleField>
-
+            </div>
+            <div className="md:col-span-1">
               <SimpleField
                 name="position"
                 control={form.control}
@@ -73,7 +105,7 @@ const EmployeeForm = () => {
               >
                 {(field) => (
                   <Select onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger className="mt-2 w-full">
+                    <SelectTrigger className="w-full !h-[40px]">
                       <SelectValue placeholder={t('message:select_an_option')} />
                     </SelectTrigger>
                     <SelectContent>
@@ -92,6 +124,8 @@ const EmployeeForm = () => {
                   </Select>
                 )}
               </SimpleField>
+            </div>
+            <div className="md:col-span-1">
               <SimpleField
                 name="password"
                 control={form.control}
@@ -103,10 +137,11 @@ const EmployeeForm = () => {
                     type="password"
                     {...field}
                     placeholder={t('employee:form.fields.password')}
-                    className="mt-2"
                   />
                 )}
               </SimpleField>
+            </div>
+            <div className="md:col-span-1">
               <SimpleField
                 name="confirmPassword"
                 control={form.control}
@@ -121,10 +156,11 @@ const EmployeeForm = () => {
                       field.onChange(value.target.value ? value.target.value : '')
                     }
                     placeholder={t('employee:form.fields.confirmPassword')}
-                    className="mt-2"
                   />
                 )}
               </SimpleField>
+            </div>
+            <div className="md:col-span-1">
               <SimpleField
                 name="startDate"
                 control={form.control}
@@ -159,6 +195,17 @@ const EmployeeForm = () => {
                 )}
               </SimpleField>
             </div>
+          </div>
+          <div className="mt-6 flex w-full items-center justify-between gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              className="border-black-20 text-black-60"
+              onClick={() => navigate(ROUTES.MASTER.EMPLOYEE.EMPLOYEE)}
+            >
+              {t('button:cancel')}
+            </Button>
+            <Button type="submit">{t('button:submit')}</Button>
           </div>
         </div>
       </form>
