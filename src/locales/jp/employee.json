@@ -29,11 +29,11 @@
       "status": "ステータス"
     },
     "positions": {
-      "engineer": "エンジニア",
       "developer": "開発者",
       "designer": "デザイナー",
-      "analyst": "アナリスト",
-      "productOwner": "プロダクトオーナー"
+      "qa": "QAテスター",
+      "hr": "人事",
+      "manager": "マネージャー"
     }
   }
 }
